@@ -4,7 +4,7 @@ Your challenged is to implement two-factor authentication within an existing sig
 
 Please implement the functionality described above based on the requirements listed below. We've also included a list of conventions for you to consider. These are conventions our dev team lives by and following these will best equip you for working at Avail.
 
-**Note:** There are no traps and to reach out early and often.
+**Note:** There are no bugs or traps in this project. If you see opportunities to refactor, great, but if something isn't working please reach out early and often!
 
 ### Getting Started
 
