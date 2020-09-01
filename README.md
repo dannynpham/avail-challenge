@@ -1,10 +1,29 @@
 ## Avail Full-Stack Engineer Coding Challenge
 
-Your challenged is to implement two-factor authentication within an existing sign-in flow. In an effort to boost security we as a product team want to require all users to go through an SMS-based two-factor authentication flow on login. As a user I should be prompted to enter a 4-digit PIN code after login. When I enter the correct PIN I should be taken into my account. When I enter an incorrect PIN I should be notified of the error.
+Your challenged is to implement two-factor authentication within an existing sign-in flow. In an effort to boost security we as a product team want to require all users to go through an SMS-based two-factor authentication flow on login. As a user I should be prompted to enter a 4-digit PIN code after login. When I enter the correct PIN I should be taken into my account. When I enter an incorrect PIN I should be notified of the error. Until a user has completed the two-factor authentication, they should not be able to do anything else within the application.
 
 Please implement the functionality described above based on the requirements listed below. We've also included a list of conventions for you to consider. These are conventions our dev team lives by and following these will best equip you for working at Avail.
 
 **Note:** There are no traps and to reach out early and often.
+
+### Getting Started
+
+-This project was set up using Rails 6.X on Ruby version 2.7.1
+-To start the rails server for the first time, run:
+```bash
+bundle install
+rake db:create
+rake db:migrate
+rails s
+```
+-To start the React project for the first time, run:
+```bash
+npm install
+npm start
+```
+-React will be served on http://localhost:3002, Rails will be served on: http://localhost:3000
+-Once the project is running, get started by creating an account in the app to ensure it is working properly.
+-Please reach out with any issues getting this set up
 
 ### Requirements
 
@@ -28,3 +47,4 @@ Please implement the functionality described above based on the requirements lis
 - We prefer functional React components (with Hooks) over class-based ones
 - We try to reduce the amount of logic within the render logic of a component
 - We use AirBnb's linting configuration
+- We have added our own UI library to get you started - it is documented here https://design.avail.co/packages
