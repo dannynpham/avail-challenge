@@ -27,14 +27,14 @@ const Users = () => {
   }
 
   if (error) {
-    return (<Text>{error}</Text>)
+    return <Text>{error}</Text>
   }
 
   return (
     <div>
       <ul>
         {(users || []).map((user) => (
-          <li>{user.name}</li>
+          <li key={user.id}>{user.name}</li>
         ))}
       </ul>
     </div>

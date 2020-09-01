@@ -1,41 +1,40 @@
 import { URL } from "./index"
 
-const createUser = (values) => new Promise ((resolve, reject) => {
-  fetch(`${URL}/users`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-    body: JSON.stringify({ user: values })
+const createUser = (values) =>
+  new Promise((resolve, reject) => {
+    fetch(`${URL}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ user: values }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
-  .then(response => response.json())
-  .then((data) => {
-    resolve(data)
-  })
-  .catch((error) => {
-    reject(error)
-  });
-})
 
-const getUsers = () => new Promise ((resolve, reject) => {
-  fetch(`${URL}/users`, {
-    method: "GET",
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
+const getUsers = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${URL}/users`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
-  .then(response => response.json())
-  .then((data) => {
-    resolve(data)
-  })
-  .catch((error) => {
-    reject(error)
-  });
-})
 
-export {
-  createUser,
-  getUsers,
-}
+export { createUser, getUsers }

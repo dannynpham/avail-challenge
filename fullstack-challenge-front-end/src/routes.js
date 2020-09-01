@@ -6,19 +6,19 @@ import Users from "./pages/Users"
 const routes = [
   {
     path: "/",
-    component: Home
+    component: Home,
   },
   {
     path: "/login",
-    component: Login
+    component: Login,
   },
   {
     path: "/signup",
-    component: Signup
+    component: Signup,
   },
   {
     path: "/users",
-    component: Users
+    component: Users,
   },
 ]
 
