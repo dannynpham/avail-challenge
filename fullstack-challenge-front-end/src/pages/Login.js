@@ -4,7 +4,7 @@ import LoginForm from "../components/login/Form"
 
 const Login = () => {
   return (
-    <Container>
+    <Container pt={4}>
       <LoginForm />
     </Container>
   )

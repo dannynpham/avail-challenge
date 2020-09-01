@@ -1,4 +1,4 @@
-import { URL } from "./index"
+import URL from "./index"
 
 const createUser = (values) =>
   new Promise((resolve, reject) => {
@@ -37,4 +37,22 @@ const getUsers = () =>
       })
   })
 
-export { createUser, getUsers }
+const getMe = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${URL}/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+
+export { createUser, getUsers, getMe }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Container } from "@rent_avail/layout"
 import { Text } from "@rent_avail/typography"
 import { getUsers } from "../api/users"
 
@@ -31,13 +32,13 @@ const Users = () => {
   }
 
   return (
-    <div>
+    <Container pt={4}>
       <ul>
         {(users || []).map((user) => (
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>
-    </div>
+    </Container>
   )
 }
 

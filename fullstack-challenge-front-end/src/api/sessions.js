@@ -1,4 +1,4 @@
-import { URL } from "./index"
+import URL from "./index"
 
 const createSession = (values) =>
   new Promise((resolve, reject) => {

@@ -4,7 +4,7 @@ import SignupForm from "../components/signup/Form"
 
 const Signup = () => {
   return (
-    <Container>
+    <Container pt={4}>
       <SignupForm />
     </Container>
   )
