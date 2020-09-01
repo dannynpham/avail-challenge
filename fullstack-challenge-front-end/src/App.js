@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { ThemeProvider } from "styled-components"
+import { Base, theme } from "@rent_avail/base"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom"
+import Header from "./components/header/Header"
+import routes from "./routes"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <Base />
+      <Router>
+        <Header />
+        <Switch>
+          {routes.map((route, i) => (
+            <Route key={i} path={route.path} component={route.component} exact />
+          ))}
+        </Switch>
+      </Router>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
