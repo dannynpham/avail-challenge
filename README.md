@@ -1,6 +1,6 @@
 ## Avail Full-Stack Engineer Coding Challenge
 
-Your challenged is to implement two-factor authentication within an existing sign-in flow. In an effort to boost security we as a product team want to require all users to go through an SMS-based two-factor authentication flow on login. As a user I should be prompted to enter a 4-digit PIN code after login. When I enter the correct PIN I should be taken into my account. When I enter an incorrect PIN I should be notified of the error. Until a user has completed the two-factor authentication, they should not be able to do anything else within the application.
+Your challenge is to implement two-factor authentication within an existing sign-in flow. In an effort to boost security we as a product team want to require all users to go through an SMS-based two-factor authentication flow on login. As a user I should be prompted to enter a 4-digit PIN code after login. When I enter the correct PIN I should be taken into my account. When I enter an incorrect PIN I should be notified of the error. Until a user has completed the two-factor authentication, they should not be able to do anything else within the application.
 
 Please implement the functionality described above based on the requirements listed below. We've also included a list of conventions for you to consider. These are conventions our dev team lives by and following these will best equip you for working at Avail.
 
