@@ -8,7 +8,9 @@ Please implement the functionality described above based on the requirements lis
 
 ### Getting Started
 
-- This project was set up using Rails 6.X on Ruby version 2.7.1
+- This project was set up using Rails 6.X on Ruby version 2.7.1 with docker and docker compose
+How to install docker: https://docs.docker.com/get-docker/
+How to install docker compose: https://docs.docker.com/compose/install/
 - To start the rails server for the first time, run:
 ```bash
 docker-compose build
