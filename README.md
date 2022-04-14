@@ -8,18 +8,15 @@ Please implement the functionality described above based on the requirements lis
 
 ### Getting Started
 
-- This project was set up using Rails 6.X on Ruby version 2.7.1
+- This project was set up using Rails 6.X on Ruby version 2.7.1 with docker and docker compose
+How to install docker: https://docs.docker.com/get-docker/
+How to install docker compose: https://docs.docker.com/compose/install/
 - To start the rails server for the first time, run:
 ```bash
-bundle install
-rake db:create
-rake db:migrate
-rails s
-```
-- To start the React project for the first time, run:
-```bash
-npm install
-npm start
+docker-compose build
+docker-compose run api rake db:create
+docker-compose run api rake db:migrate
+docker-compose up
 ```
 - React will be served on http://localhost:3002, Rails will be served on: http://localhost:3000
 - Once the project is running, get started by creating an account in the app to ensure it is working properly.
