@@ -33,12 +33,6 @@ docker-compose up
 - The component should be reusable. It should be possible to have multiple instances of the component on the same page
 - Document your component in `SOLUTION.md`
 
-### Stretch goals:
-
-- Integrate with a free 3rd party API (e.g. Twilio) to send and verify a PIN code via SMS
-- End-to-end test coverage using Cypress.io
-- Refactor existing code to be more re-usable
-
 ### Conventions:
 
 - We believe in TDD and good unit test coverage
