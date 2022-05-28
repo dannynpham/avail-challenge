@@ -5,22 +5,23 @@ import { Button } from "@rent_avail/controls"
 import { Text } from "@rent_avail/typography"
 import Input from "@rent_avail/input"
 import { useHistory } from "react-router-dom"
-import { createSession } from "../../api/sessions"
+import { verifyTwoFactorCode } from "../../api/sessions"
 
-const LoginForm = () => {
+const TwoFactorForm = () => {
   const history = useHistory()
   const { handleSubmit, register, errors, setError, formState } = useForm()
 
   const onSubmit = async (values) => {
+    console.log(values);
     try {
-      const data = await createSession(values)
+      const data = await verifyTwoFactorCode(values)
       if (data && data.error) {
-        setError("password", {
+        setError("code", {
           type: "manual",
           message: data.error,
         })
       } else {
-        history.push("/two-factor")
+        history.push("/users")
       }
     } catch (err) {
       console.error("Error:", err)
@@ -31,33 +32,18 @@ const LoginForm = () => {
     <Stack>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
-          label="Email"
-          name="email"
-          type="email"
+          label="Two Factor Code"
+          name="code"
+          type="number"
           ref={register({
             required: "Required",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "invalid email address",
-            },
+            maxLength: 4,
+            minLength: 4,
           })}
         />
-        {errors.email && (
+        {errors.code && (
           <Text color="red" pt={2}>
-            {errors.email.message}
-          </Text>
-        )}
-
-        <Input
-          mt={2}
-          label="Password"
-          type="password"
-          name="password"
-          ref={register()}
-        />
-        {errors.password && (
-          <Text color="red" pt={2}>
-            {errors.password.message}
+            {errors.code.message}
           </Text>
         )}
 
@@ -69,4 +55,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default TwoFactorForm

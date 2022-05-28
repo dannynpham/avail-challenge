@@ -19,6 +19,25 @@ const createSession = (values) =>
       })
   })
 
+const verifyTwoFactorCode = (values) =>
+  new Promise((resolve, reject) => {
+    fetch(`${URL}/sessions`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ session: values }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+
 const destroySession = () =>
   new Promise((resolve, reject) => {
     fetch(`${URL}/sessions`, {
@@ -37,4 +56,4 @@ const destroySession = () =>
       })
   })
 
-export { createSession, destroySession }
+export { createSession, verifyTwoFactorCode, destroySession }
