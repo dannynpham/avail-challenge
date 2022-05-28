@@ -1,9 +1,11 @@
 class User < ApplicationRecord
+  include Authenticatable
+
   has_secure_password
 
   class << self
     def with_email(email_to_match)
-      where("lower(email) = ?", email_to_match.to_s.downcase).first
+      where('lower(email) = ?', email_to_match.to_s.downcase).first
     end
   end
 

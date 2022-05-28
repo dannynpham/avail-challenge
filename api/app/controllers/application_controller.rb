@@ -3,18 +3,16 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   def current_user
-    @current_user ||= User.find(session[:user_id])
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: 'You must be logged in.' }, status: :unprocessable_entity
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def entered_pin?
-    render json: { error: 'You must enter pin number.' }, status: :unprocessable_entity unless session[:entered_pin]
-
-    true
+  def entered_code?
+    session[:entered_code] || false
   end
 
   def authenticate_user!
-    current_user.present? && entered_pin?
+    return true if current_user.present? && entered_code?
+
+    render json: { error: 'You must be logged in.' }, status: :unprocessable_entity
   end
 end
