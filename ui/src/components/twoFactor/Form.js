@@ -12,7 +12,6 @@ const TwoFactorForm = () => {
   const { handleSubmit, register, errors, setError, formState } = useForm()
 
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       const data = await verifyTwoFactorCode(values)
       if (data && data.error) {
