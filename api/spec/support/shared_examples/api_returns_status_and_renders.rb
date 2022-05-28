@@ -4,8 +4,10 @@ RSpec.shared_examples 'API returns status and renders' do |expected_status_code,
     expect(response).to have_http_status expected_status_code
   end
 
-  it "matches the #{expected_json_schema.inspect} schema" do
-    make_request
-    expect(response).to match_response_schema expected_json_schema
+  if expected_json_schema
+    it "matches the #{expected_json_schema.inspect} schema" do
+      make_request
+      expect(response).to match_response_schema expected_json_schema
+    end
   end
 end

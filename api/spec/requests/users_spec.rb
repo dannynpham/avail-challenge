@@ -24,38 +24,27 @@ RSpec.describe SessionsController do
 
   describe 'POST /users' do
     context 'with valid params' do
-      def valid_request
-        post users_url(params: { user: { email: 'valid@email.com', password: 'password', name: 'Valid Name' } })
+      def make_request
+        post users_url(params: { user: { email: 'valid@email.com', password: 'password', name: 'Valid Name',
+                                         phone_number: '55555555' } })
       end
 
-      context 'creates a new user' do
-        include_examples 'API returns status and renders', :success, :user do
-          def make_request
-            post users_url(params: { user: { email: 'valid@email.com', password: 'password', name: 'Valid Name' } })
-          end
-        end
-      end
+      include_examples 'API returns status and renders', :success, :user
 
       it 'increases user count' do
-        expect { valid_request }.to(change { User.count })
+        expect { make_request }.to(change { User.count })
       end
     end
 
     context 'with invalid params' do
-      def invalid_request
+      def make_request
         post users_url(params: { user: { email: nil, password: nil } })
       end
 
-      context 'does not create a new user' do
-        include_examples 'API returns status and renders', :unprocessable_entity, :error do
-          def make_request
-            post users_url(params: { user: { email: nil, password: nil } })
-          end
-        end
-      end
+      include_examples 'API returns status and renders', :unprocessable_entity, :error
 
       it 'does not increase user count' do
-        expect { invalid_request }.not_to(change { User.count })
+        expect { make_request }.not_to(change { User.count })
       end
     end
   end

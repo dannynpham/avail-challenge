@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def update
-    render json: { user: current_user }, status: :ok and return if current_user && gentered_code?
+    render json: { user: current_user }, status: :ok and return if current_user && entered_code?
 
     if current_user&.authenticate_code(session_params[:code])
       session[:entered_code] = true

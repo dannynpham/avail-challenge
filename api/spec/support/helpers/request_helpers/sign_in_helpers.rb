@@ -8,6 +8,11 @@ module RequestHelpers
         params: { session: { email: user.email, password: user.password } }
       )
 
+      put(
+        sessions_url,
+        params: { session: { code: Authenticatable::SECRET_CODE } }
+      )
+
       user
     end
   end

@@ -25,7 +25,7 @@ RSpec.describe SessionsController do
     context 'with valid credentials' do
       let(:user) { create(:user, password: 'right-password') }
 
-      include_examples 'API returns status and renders', :success, :user do
+      include_examples 'API returns status and renders', :success do
         def make_request
           post sessions_url,
                params: { session: { email: user.email, password: 'right-password' } }
