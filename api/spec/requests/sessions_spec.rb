@@ -25,24 +25,27 @@ RSpec.describe SessionsController do
     context 'with valid credentials' do
       let(:user) { create(:user, password: 'right-password') }
 
-      include_examples 'API returns status and renders', :success do
-        def make_request
-          post sessions_url,
-               params: { session: { email: user.email, password: 'right-password' } }
-        end
+      def make_request
+        post sessions_url,
+             params: { session: { email: user.email, password: 'right-password' } }
+      end
+
+      include_examples 'API returns status and renders', :success
+
+      it 'sets the user id in session' do
+        make_request
+        expect(session[:user_id]).to eq user.id
       end
     end
   end
 
   describe 'DELETE /sessions' do
-    context 'when the organization authenticates with username and password' do
-      it 'signs the user out' do
-        user = sign_in_user
-        expect(session[:user_id]).to eq user.id
+    it 'signs the user out' do
+      user = sign_in_user
+      expect(session[:user_id]).to eq user.id
 
-        delete sessions_url
-        expect(session[:user_id]).to be_nil
-      end
+      delete sessions_url
+      expect(session[:user_id]).to be_nil
     end
   end
 end

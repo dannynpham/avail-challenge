@@ -4,7 +4,7 @@ RSpec.describe SessionsController do
   include RequestHelpers::SignInHelpers
 
   describe 'GET /users' do
-    context 'with valid session returns list of users' do
+    context 'with valid session' do
       include_examples 'API returns status and renders', :success, :user_list do
         def make_request
           sign_in_user
@@ -13,7 +13,7 @@ RSpec.describe SessionsController do
       end
     end
 
-    context 'without valid session returns error' do
+    context 'without valid session' do
       include_examples 'API returns status and renders', :unprocessable_entity, :error do
         def make_request
           get users_url
@@ -50,7 +50,7 @@ RSpec.describe SessionsController do
   end
 
   describe 'GET /me' do
-    context 'with valid session returns current user' do
+    context 'with valid session' do
       include_examples 'API returns status and renders', :success, :user do
         def make_request
           sign_in_user
@@ -59,7 +59,7 @@ RSpec.describe SessionsController do
       end
     end
 
-    context 'without valid session returns error' do
+    context 'without valid session' do
       include_examples 'API returns status and renders', :unprocessable_entity, :error do
         def make_request
           get me_url
