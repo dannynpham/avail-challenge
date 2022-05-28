@@ -59,7 +59,9 @@ const LoginForm = () => {
           label="Phone Number"
           type="phone"
           name="phone_number"
-          ref={register()}
+          ref={register({
+            required: "Required",
+          })}
         />
         {errors.password && (
           <Text color="red" pt={2}>
@@ -72,7 +74,9 @@ const LoginForm = () => {
           label="Password"
           type="password"
           name="password"
-          ref={register()}
+          ref={register({
+            required: "Required",
+          })}
         />
         {errors.password && (
           <Text color="red" pt={2}>
