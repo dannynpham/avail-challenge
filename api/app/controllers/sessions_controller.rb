@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
+      session[:entered_pin] = false
       render json: { user: user }
     else
       render json: { error: 'Invalid. Please try again.' }, status: :unprocessable_entity

@@ -8,7 +8,13 @@ class ApplicationController < ActionController::Base
     render json: { error: 'You must be logged in.' }, status: :unprocessable_entity
   end
 
+  def entered_pin?
+    render json: { error: 'You must enter pin number.' }, status: :unprocessable_entity unless session[:entered_pin]
+
+    true
+  end
+
   def authenticate_user!
-    current_user.present?
+    current_user.present? && entered_pin?
   end
 end

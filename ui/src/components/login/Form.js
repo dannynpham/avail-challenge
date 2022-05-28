@@ -33,6 +33,7 @@ const LoginForm = () => {
         <Input
           label="Email"
           name="email"
+          type="email"
           ref={register({
             required: "Required",
             pattern: {
