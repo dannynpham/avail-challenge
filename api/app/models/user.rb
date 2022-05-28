@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Authenticatable
 
   has_secure_password
+  validates :phone_number, presence: true
 
   class << self
     def with_email(email_to_match)
