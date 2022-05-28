@@ -3,11 +3,9 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   def current_user
-    begin
-      @current_user ||= User.find(session[:user_id])
-    rescue ActiveRecord::RecordNotFound
-      render json: { error: "You must be logged in."}, status: :unprocessable_entity
-    end
+    @current_user ||= User.find(session[:user_id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'You must be logged in.' }, status: :unprocessable_entity
   end
 
   def authenticate_user!

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_user!, only: %i[show index]
 
   def index
     users = User.all
@@ -17,14 +17,14 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       render json: { user: user }
     else
-      render json: { error: "Invalid. Please try again."}, status: :unprocessable_entity
+      render json: { error: 'Invalid. Please try again.' }, status: :unprocessable_entity
     end
   end
 
-
   private
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:email, :name, :password, :phone_number)
-    end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:email, :name, :password, :phone_number)
+  end
 end

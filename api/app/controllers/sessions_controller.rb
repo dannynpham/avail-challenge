@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: session_params[:email])
 
-    if user && user.authenticate(session_params[:password])
+    if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
       render json: { user: user }
     else
-      render json: { error: "Invalid. Please try again."}, status: :unprocessable_entity
+      render json: { error: 'Invalid. Please try again.' }, status: :unprocessable_entity
     end
   end
 
@@ -16,8 +16,9 @@ class SessionsController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def session_params
-      params.require(:session).permit(:email, :password)
-    end
+
+  # Only allow a list of trusted parameters through.
+  def session_params
+    params.require(:session).permit(:email, :password)
+  end
 end
