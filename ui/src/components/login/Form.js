@@ -1,7 +1,7 @@
 import React from "react"
 import { useForm } from "react-hook-form"
-import { Stack } from "@rent_avail/layout"
-import { Button } from "@rent_avail/controls"
+import { Stack, Flex, Box } from "@rent_avail/layout"
+import { Button, Checkbox } from "@rent_avail/controls"
 import { Text } from "@rent_avail/typography"
 import Input from "@rent_avail/input"
 import { useHistory } from "react-router-dom"
@@ -61,9 +61,21 @@ const LoginForm = () => {
           </Text>
         )}
 
-        <Button mt={2} loading={formState.isSubmitting} type="submit">
-          Submit
-        </Button>
+        <Flex alignItems="center" justifyContent="space-between">
+          <Button mt={2} loading={formState.isSubmitting} type="submit">
+            Submit
+          </Button>
+          <Flex alignItems="center">
+            <Box mr={1}>
+              Remember Device
+            </Box>
+            <Checkbox
+              type="remember_device"
+              name="remember_device"
+              ref={register()}
+            />
+          </Flex>
+        </Flex>
       </form>
     </Stack>
   )
